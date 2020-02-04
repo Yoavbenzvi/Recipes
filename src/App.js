@@ -11,7 +11,7 @@ const App = () => {
 	const [query, setQuery] = useState("chicken")
 
 	useEffect(() => {
-		//getRecipes();
+		getRecipes();
 	}, [query]);
 
 	const getRecipes = async () => {
@@ -44,14 +44,18 @@ const App = () => {
 				/>
 				<button className="search-button" type="submit">Search</button>
 			</form>
-			{recipes.map((recipe, i) => (
-				<Recipe 
-					key={i}
-					title={recipe.recipe.label} 
-					calories={recipe.recipe.calories} 
-					image={recipe.recipe.image}
-				/>
-			))}
+			<div className="recipes">
+				{recipes.map((recipe, i) => (
+					<Recipe 
+						key={i}
+						title={recipe.recipe.label} 
+						calories={recipe.recipe.calories} 
+						image={recipe.recipe.image}
+						ingredients={recipe.recipe.ingredients}
+						fullRecipe={recipe.recipe.url}
+					/>
+				))}
+			</div>
 		</div>
 	)
 }
